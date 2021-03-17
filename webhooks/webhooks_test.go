@@ -883,6 +883,48 @@ func TestParse_ErrUnknownNotification(t *testing.T) {
 	}
 }
 
+func TestParse_PreRenewalNotification(t *testing.T) {
+	result := MustParseFile("testdata/prerenewal_notification.xml")
+	if n, ok := result.(*webhooks.SubscriptionNotification); !ok {
+		t.Fatalf("unexpected type: %T, result", n)
+	} else if diff := cmp.Diff(n, &webhooks.SubscriptionNotification{
+		Type: webhooks.PrerenewalSubscription,
+		Account: webhooks.Account{
+			XMLName:   xml.Name{Local: "account"},
+			Code:      "account-asdf",
+			Username:  "Buddha",
+			Email:     "buddha@buddha.com",
+			FirstName: "Buddha",
+			LastName:  "Buddha",
+		},
+		Subscription: recurly.Subscription{
+			XMLName: xml.Name{Local: "subscription"},
+			Plan: recurly.NestedPlan{
+				Code: "dueygolf-daily",
+				Name: "dueygolf-daily",
+			},
+			UUID:                   "59251f6479964de0f563ee4db383f73b",
+			State:                  "active",
+			Quantity:               1,
+			TotalAmountInCents:     0,
+			ActivatedAt:            recurly.NewTime(MustParseTime("2021-02-18T18:08:23Z")),
+			CurrentPeriodStartedAt: recurly.NewTime(MustParseTime("2021-02-18T18:08:23Z")),
+			CurrentPeriodEndsAt:    recurly.NewTime(MustParseTime("2021-02-19T18:08:23Z")),
+			SubscriptionAddOns: []recurly.SubscriptionAddOn{
+				{
+					XMLName:     xml.Name{Local: "subscription_add_on"},
+					Type:        "usage",
+					Code:        "daily-usage",
+					Quantity:    1,
+					AddOnSource: "plan_add_on",
+				},
+			},
+		},
+	}); diff != "" {
+		t.Fatal(diff)
+	}
+}
+
 func MustParseFile(file string) interface{} {
 	f := MustOpenFile(file)
 	result, err := webhooks.Parse(f)

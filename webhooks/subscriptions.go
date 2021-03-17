@@ -17,6 +17,7 @@ const (
 	PausedRenewalSubscription  = "paused_subscription_renewal_notification"
 	PauseCanceledSubscription  = "subscription_pause_canceled_notification"
 	ReactivatedAccount         = "reactivated_account_notification"
+	PrerenewalSubscription     = "prerenewal_notification"
 )
 
 // SubscriptionNotification is returned for all subscription notifications.
