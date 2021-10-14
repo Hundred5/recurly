@@ -135,6 +135,14 @@ func TestBilling_Encoding(t *testing.T) {
 				</billing_info>
 			`),
 		},
+		{
+			v: recurly.Billing{TransactionType: "moto"},
+			expected: MustCompactString(`
+				<billing_info>
+					<transaction_type>moto</transaction_type>
+				</billing_info>
+			`),
+		},
 	}
 
 	for i, tt := range tests {
@@ -229,9 +237,10 @@ func TestBilling_Get(t *testing.T) {
 		if info, err := client.Billing.Get(context.Background(), "1"); err != nil {
 			t.Fatal(err)
 		} else if diff := cmp.Diff(info, &recurly.Billing{
-			XMLName:   xml.Name{Local: "billing_info"},
-			FirstName: "Verena",
-			LastName:  "Example",
+			XMLName:     xml.Name{Local: "billing_info"},
+			FirstName:   "Verena",
+			LastName:    "Example",
+			PaymentType: "ach",
 		}); diff != "" {
 			t.Fatal(diff)
 		} else if !s.Invoked {
@@ -518,5 +527,6 @@ func NewTestBillingInfo() *recurly.Billing {
 		Month:            11,
 		FirstSix:         "411111",
 		LastFour:         "1111",
+		PaymentType:      "credit_card",
 	}
 }

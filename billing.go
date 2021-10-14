@@ -77,6 +77,7 @@ type Billing struct {
 	VATNumber        string   `xml:"vat_number,omitempty"`
 	IPAddress        net.IP   `xml:"ip_address,omitempty"`
 	IPAddressCountry string   `xml:"ip_address_country,omitempty"`
+	PaymentType      string   `xml:"type,attr,omitempty"`
 
 	// Credit Card Info
 	FirstSix          string `xml:"first_six,omitempty"`
@@ -89,6 +90,9 @@ type Billing struct {
 
 	// Paypal
 	PaypalAgreementID string `xml:"paypal_billing_agreement_id,omitempty"`
+
+	// BrainTree
+	BrainTreePaymentNonce string `xml:"braintree_payment_nonce,omitempty"`
 
 	// Amazon
 	AmazonAgreementID string `xml:"amazon_billing_agreement_id,omitempty"`
@@ -104,6 +108,7 @@ type Billing struct {
 	Currency                        string `xml:"currency,omitempty"`                              // Create/update only
 	Token                           string `xml:"token_id,omitempty"`                              // Create/update only
 	ThreeDSecureActionResultTokenID string `xml:"three_d_secure_action_result_token_id,omitempty"` // Create/update only
+	TransactionType                 string `xml:"transaction_type,omitempty"`                      // Create only
 }
 
 // Type returns the billing info type. Returns either  "", "bank", or an empty string.
