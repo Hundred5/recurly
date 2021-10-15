@@ -87,6 +87,7 @@ type Adjustment struct {
 	TaxRate                float64     `xml:"tax_rate,omitempty"`
 	TaxExempt              NullBool    `xml:"tax_exempt,omitempty"`
 	TaxDetails             []TaxDetail `xml:"tax_details>tax_detail,omitempty"`
+	ItemCode               string      `xml:"item_code,omitempty"`
 
 	// The following are only valid with an `Avalara for Communications` integration
 	AvalaraTransactionType int `xml:"avalara_transaction_type,omitempty"`
@@ -117,6 +118,7 @@ func (a Adjustment) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
 		AvalaraServiceType     int      `xml:"avalara_service_type,omitempty"`
 		StartDate              NullTime `xml:"start_date,omitempty"`
 		EndDate                NullTime `xml:"end_date,omitempty"`
+		ItemCode               string   `xml:"item_code,omitempty"`
 	}{
 		Description:            a.Description,
 		AccountingCode:         a.AccountingCode,
@@ -132,6 +134,7 @@ func (a Adjustment) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
 		AvalaraTransactionType: a.AvalaraTransactionType,
 		StartDate:              a.StartDate,
 		EndDate:                a.EndDate,
+		ItemCode:               a.ItemCode,
 	})
 }
 
