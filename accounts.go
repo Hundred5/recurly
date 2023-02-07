@@ -107,7 +107,19 @@ type clearAccount struct {
 	FirstName string   `xml:"first_name"`
 	LastName  string   `xml:"last_name"`
 	VATNumber string   `xml:"vat_number"`
-	Address   *Address `xml:"address"`
+	Address   struct {
+		XMLName   xml.Name `xml:"address"`
+		FirstName string   `xml:"first_name"`
+		LastName  string   `xml:"last_name"`
+		Company   string   `xml:"company"`
+		Address   string   `xml:"address1"`
+		Address2  string   `xml:"address2"`
+		City      string   `xml:"city"`
+		State     string   `xml:"state"`
+		Zip       string   `xml:"zip"`
+		Country   string   `xml:"country"`
+		Phone     string   `xml:"phone"`
+	} `xml:"address"`
 }
 
 // AccountBalance is used for getting the account balance.
