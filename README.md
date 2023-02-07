@@ -206,13 +206,13 @@ For examples of how to test your code using mocks, visit the [GoDoc examples](ht
 
 ## Contributing
 
-We use [`dep`](https://github.com/golang/dep) for dependency management. If you
-do not have it installed, see the [installation instructions](https://github.com/golang/dep#installation).
+We use `go mod` for dependency management, it's included with the standard go tooling.
 
 To contribute: fork and clone the repository, `cd` into the directory, and run:
 
 ```shell
-dep ensure
+go mod tidy
+go mod vendor
 ```
 
 That will ensure you have [`google/go-cmp`](https://github.com/google/go-cmp) which is used to run tests.
