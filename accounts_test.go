@@ -377,6 +377,22 @@ func TestAccounts_Update(t *testing.T) {
 	}
 }
 
+func TestAccounts_Clear(t *testing.T) {
+	client, s := recurly.NewTestServer()
+	defer s.Close()
+
+	s.HandleFunc("PUT", "/v2/accounts/1", func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		w.Write(MustOpenFile("account.xml"))
+	}, t)
+
+	if err := client.Accounts.Clear(context.Background(), "1"); !s.Invoked {
+		t.Fatal("expected fn invocation")
+	} else if err != nil {
+		t.Fatal(err)
+	}
+}
+
 func TestAccounts_Close(t *testing.T) {
 	client, s := recurly.NewTestServer()
 	defer s.Close()
