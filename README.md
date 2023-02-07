@@ -1,44 +1,49 @@
 # Recurly Client for Go
 
- [![Build Status](https://travis-ci.org/blacklightcms/recurly.svg?branch=master)](https://travis-ci.org/blacklightcms/recurly)  [![GoDoc](https://godoc.org/github.com/blacklightcms/recurly?status.svg)](https://godoc.org/github.com/blacklightcms/recurly/)
+[![Build Status](https://travis-ci.org/togglhire/recurly.svg?branch=master)](https://travis-ci.org/togglhire/recurly) [![GoDoc](https://godoc.org/github.com/togglhire/recurly?status.svg)](https://godoc.org/github.com/togglhire/recurly/)
 
- Recurly is a Go (golang) API Client for the [Recurly](https://recurly.com/) API. It is actively maintained, unit tested, and uses no external dependencies. The vast majority of the API is implemented.
+Recurly is a Go (golang) API Client for the [Recurly](https://recurly.com/) API. It is actively maintained, unit tested, and uses no external dependencies. The vast majority of the API is implemented.
 
- Supports:
-  - Recurly API `v2.27`
-  - Accounts
-  - Add Ons
-  - Adjustments
-  - Billing
-  - Coupons
-  - Credit Payments
-  - Invoices
-  - Plans
-  - Purchases
-  - Redemptions
-  - Shipping Addresses
-  - Shipping Methods
-  - Subscriptions
-  - Transactions
+Supports:
+
+- Recurly API `v2.27`
+- Accounts
+- Add Ons
+- Adjustments
+- Billing
+- Coupons
+- Credit Payments
+- Invoices
+- Plans
+- Purchases
+- Redemptions
+- Shipping Addresses
+- Shipping Methods
+- Subscriptions
+- Transactions
 
 ## Installation
+
 Install:
 
 ```shell
-go get github.com/blacklightcms/recurly
+go get github.com/togglhire/recurly
 ```
 
 Import:
+
 ```go
-import "github.com/blacklightcms/recurly"
+import "github.com/togglhire/recurly"
 ```
 
 Resources:
- - [API Docs](https://godoc.org/github.com/blacklightcms/recurly/)
- - [Examples](https://godoc.org/github.com/blacklightcms/recurly/#pkg-examples)
+
+- [API Docs](https://godoc.org/github.com/togglhire/recurly/)
+- [Examples](https://godoc.org/github.com/togglhire/recurly/#pkg-examples)
 
 ## Note on v1 and breaking changes
-If migrating from a previous version of the library, there was a large refactor with breaking changes released to address some design issues with the library. See the [migration guide](https://github.com/blacklightcms/recurly/wiki/v1-Migration-Guide) for steps on how to migrate to the latest version.
+
+If migrating from a previous version of the library, there was a large refactor with breaking changes released to address some design issues with the library. See the [migration guide](https://github.com/togglhire/recurly/wiki/v1-Migration-Guide) for steps on how to migrate to the latest version.
 
 This is recommended for all users.
 
@@ -54,7 +59,8 @@ a, err := client.Accounts.Get(context.Background(), "1")
 ```
 
 ## Examples and How To
-Please go through [examples](https://godoc.org/github.com/blacklightcms/recurly/#pkg-examples) for detailed examples of using this package.
+
+Please go through [examples](https://godoc.org/github.com/togglhire/recurly/#pkg-examples) for detailed examples of using this package.
 
 The examples explain important cases like:
 
@@ -66,6 +72,7 @@ The examples explain important cases like:
 Here are a few snippets to demonstrate library usage.
 
 ### Create Account
+
 ```go
 account, err := client.Accounts.Create(ctx, recurly.Account{
     Code: "1",
@@ -75,11 +82,12 @@ account, err := client.Accounts.Create(ctx, recurly.Account{
 })
 ```
 
-> **NOTE**: An account can also be created along a subscription by embedding the 
-> account in the subscription during creation. The purchases API also supports 
+> **NOTE**: An account can also be created along a subscription by embedding the
+> account in the subscription during creation. The purchases API also supports
 > this, and likely other endpoints. See Recurly's documentation for details.
 
 ### Get Account
+
 ```go
 account, err := client.Accounts.Get(ctx, "1")
 if err != nil {
@@ -92,6 +100,7 @@ if err != nil {
 ```
 
 ### Create Billing Info
+
 ```go
 // Using token obtained with recurly.js
 // If you want to set billing info directly, omit the token and set the
@@ -100,6 +109,7 @@ billing, err := client.Billing.Create("1", recurly.Billing{
     Token: token,
 })
 ```
+
 > **NOTE**: See the error handling section in GoDoc for how to handle transaction errors
 
 ### Creating Purchases
@@ -127,6 +137,7 @@ if err != nil {
 > structs and [Recurly's documentation](https://dev.recurly.com/docs/create-purchase) for more info.
 
 ### Creating Subscriptions
+
 ```go
 subscription, err := client.Subscriptions.Create(ctx, recurly.NewSubscription{
     PlanCode: "gold",
@@ -141,18 +152,20 @@ if err != nil {
     return err
 }
 ```
-> **NOTE**: Recurly offers several other ways to create subscriptions, often embedded 
-> within other requests (such as the `Purchases.Create()` call). See Recurly's 
+
+> **NOTE**: Recurly offers several other ways to create subscriptions, often embedded
+> within other requests (such as the `Purchases.Create()` call). See Recurly's
 > documentation for more details.
 
 ## Webhooks
-This library supports webhooks via the `webhooks` sub package. 
 
-The usage is to parse the webhook from a reader, then use a switch statement 
+This library supports webhooks via the `webhooks` sub package.
+
+The usage is to parse the webhook from a reader, then use a switch statement
 to determine the type of webhook received.
 
 ```go
-// import "github.com/blacklightcms/recurly/webhooks"
+// import "github.com/togglhire/recurly/webhooks"
 
 hook, err := webhooks.Parse(r)
 if e, ok := err.(*webhooks.ErrUnknownNotification); ok {
@@ -177,28 +190,29 @@ default:
 ```
 
 ## Testing
+
 Once you've imported this library into your application, you will want to add tests.
 
-Internally this library sets up a test HTTPs server and validates methods, paths, 
+Internally this library sets up a test HTTPs server and validates methods, paths,
 query strings, request body, and returns XML. You will not need to worry about those internals
 when testing your own code that uses this library.
 
-Instead we recommend using the `mock` package. The `mock` package provides mocks 
+Instead we recommend using the `mock` package. The `mock` package provides mocks
 for all of the different services in this library.
 
-For examples of how to test your code using mocks, visit the [GoDoc examples](https://godoc.org/github.com/blacklightcms/recurly/mock/).
+For examples of how to test your code using mocks, visit the [GoDoc examples](https://godoc.org/github.com/togglhire/recurly/mock/).
 
 > **NOTE**: If you need to go beyond mocks and test requests/responses, `testing.go` exports `TestServer`. This is how the library tests itself. See the GoDoc or the `*_test.go` files for usage examples.
 
 ## Contributing
 
-We use [`dep`](https://github.com/golang/dep) for dependency management. If you 
-do not have it installed, see the [installation instructions](https://github.com/golang/dep#installation).
+We use `go mod` for dependency management, it's included with the standard go tooling.
 
 To contribute: fork and clone the repository, `cd` into the directory, and run:
 
 ```shell
-dep ensure
+go mod tidy
+go mod vendor
 ```
 
 That will ensure you have [`google/go-cmp`](https://github.com/google/go-cmp) which is used to run tests.

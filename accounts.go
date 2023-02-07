@@ -37,6 +37,9 @@ type AccountsService interface {
 	// https://dev.recurly.com/docs/update-account
 	Update(ctx context.Context, accountCode string, a Account) (*Account, error)
 
+	// Clear empties added info on a account.
+	Clear(ctx context.Context, accountCode string) error
+
 	// Close marks an account as closed and cancels any active subscriptions.
 	// Paused subscriptions will be expired.
 	//
@@ -95,6 +98,16 @@ type Account struct {
 	PreferredLocale         string             `xml:"preferred_locale,omitempty"`
 	CustomFields            *CustomFields      `xml:"custom_fields,omitempty"`
 	TransactionType         string             `xml:"transaction_type,omitempty"` // Create only
+}
+
+// clearAccount is a helper object for clearing info from a recurly account.
+type clearAccount struct {
+	XMLName   xml.Name `xml:"account"`
+	Code      string   `xml:"account_code,omitempty"`
+	FirstName string   `xml:"first_name"`
+	LastName  string   `xml:"last_name"`
+	VATNumber string   `xml:"vat_number"`
+	Address   *Address `xml:"address"`
 }
 
 // AccountBalance is used for getting the account balance.
@@ -192,6 +205,17 @@ func (s *accountsImpl) Update(ctx context.Context, code string, a Account) (*Acc
 		return nil, err
 	}
 	return &dst, err
+}
+
+func (s *accountsImpl) Clear(ctx context.Context, code string) error {
+	path := fmt.Sprintf("/accounts/%s", code)
+	a := clearAccount{}
+	req, err := s.client.newRequest("PUT", path, a)
+	if err != nil {
+		return err
+	}
+	_, err = s.client.do(ctx, req, nil)
+	return err
 }
 
 func (s *accountsImpl) Close(ctx context.Context, code string) error {

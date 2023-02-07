@@ -4,9 +4,9 @@ import (
 	"context"
 	"testing"
 
-	"github.com/blacklightcms/recurly"
-	"github.com/blacklightcms/recurly/mock"
 	"github.com/google/go-cmp/cmp"
+	"github.com/togglhire/recurly"
+	"github.com/togglhire/recurly/mock"
 )
 
 func ExampleNewClient(t *testing.T) {

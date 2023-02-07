@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/blacklightcms/recurly"
+	"github.com/togglhire/recurly"
 )
 
 var _ recurly.AutomatedExportsService = &AutomatedExportsService{}
