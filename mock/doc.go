@@ -6,7 +6,7 @@ This package makes it easy to test code using the Recurly API by focusing on
 the arguments passed into each function and returning the expected result as
 structs from the Recurly package. There is no need to deal with XML or make any HTTP requests.
 
-Simple Setup
+# Simple Setup
 
 The basic setup for a test involves creating a new mock client, attaching mocks,
 and returning expected results.
@@ -35,7 +35,7 @@ and returning expected results.
 		}
 	}
 
-More Common Setup
+# More Common Setup
 
 If you created your own wrapper type to the library, let's call it PaymentsProvider:
 
@@ -82,7 +82,7 @@ Then in your test suite you might configure your own wrapper similar to mock.Cli
 		"context"
 
 		"github.com/your-project/foo"
-		"github.com/blacklightcms/recurly/mock"
+		"github.com/togglhire/recurly/mock"
 	)
 
 	// Provider is a test wrapper for foo.Provider.
@@ -128,6 +128,5 @@ Then in your test suite you might configure your own wrapper similar to mock.Cli
 	}
 
 See examples for more.
-
 */
 package mock

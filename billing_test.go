@@ -9,8 +9,8 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/blacklightcms/recurly"
 	"github.com/google/go-cmp/cmp"
+	"github.com/togglhire/recurly"
 )
 
 // Ensure structs are encoded to XML properly.

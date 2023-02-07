@@ -18,7 +18,7 @@ import (
 
 // apiVersion is the API version in use by this client.
 // NOTE: v2.19:
-//		- Parent/child accounts not yet implemented.
+//   - Parent/child accounts not yet implemented.
 const apiVersion = "2.27"
 
 // uaVersion is the userAgent version sent to Recurly so they can track usage
@@ -41,7 +41,7 @@ type Client struct {
 
 	// userAgent sets the User-Agent header for requests so Recurly can
 	// track usage of the client.
-	// See https://github.com/blacklightcms/recurly/issues/41
+	// See https://github.com/togglhire/recurly/issues/41
 	userAgent string
 
 	// Client is the HTTP Client used to communicate with the API.

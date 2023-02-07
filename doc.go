@@ -1,12 +1,12 @@
 /*
 Package recurly provides a client for using the Recurly API.
 
-Usage
+# Usage
 
 Construct a new Recurly client, then use the various services on the client to
 access different parts of the Recurly API. For example:
 
-	import "github.com/blacklightcms/recurly"
+	import "github.com/togglhire/recurly"
 
 	func main() {
 		client := recurly.NewClient("your-subdomain", "APIKEY")
@@ -17,7 +17,7 @@ access different parts of the Recurly API. For example:
 
 See the examples section for more usage examples.
 
-Null Types
+# Null Types
 
 Null types provide a way to differentiate between zero values and real values.
 For example, 0 is the zero value for ints; false for bools. Because those are
@@ -55,7 +55,7 @@ the value is valid only if the pointer is non-nil:
 	b := recurly.NewBoolPtr(b) // where b is *bool
 	t := recurly.NewTimePtr(t) // where t is *time.Time. If non-nil, t.IsZero() must be false to be considered valid
 
-Error Handling
+# Error Handling
 
 Generally, checking that err != nil is sufficient to catch errors. However there
 are some circumstances where you may need to know more about the specific error.
@@ -109,7 +109,7 @@ information on the amount of requests and when the rate limit will reset.
 
 For more on errors, see the examples section below.
 
-Get Methods
+# Get Methods
 
 When retrieving an individual item (e.g. account, invoice, subscription): if the
 item is not found, Recurly will return a 404 Not Found. Typically this will return
@@ -123,8 +123,7 @@ a nil item and nil error will be returned if the item is not found.
 		// account not found
 	}
 
-
-Pagination
+# Pagination
 
 All requests for resource collections support pagination. Pagination options are
 described in the recurly.PagerOptions struct and passed to the list methods directly.
@@ -172,6 +171,5 @@ the next result set:
 	pager := client.Accounts.List(&recurly.PagerOptions{
 		Cursor: cursor,
 	})
-
 */
 package recurly

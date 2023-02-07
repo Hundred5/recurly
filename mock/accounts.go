@@ -3,7 +3,7 @@ package mock
 import (
 	"context"
 
-	"github.com/blacklightcms/recurly"
+	"github.com/togglhire/recurly"
 )
 
 var _ recurly.AccountsService = &AccountsService{}
@@ -24,6 +24,9 @@ type AccountsService struct {
 
 	OnUpdate      func(ctx context.Context, code string, a recurly.Account) (*recurly.Account, error)
 	UpdateInvoked bool
+
+	OnClear      func(ctx context.Context, code string) error
+	ClearInvoked bool
 
 	OnClose      func(ctx context.Context, code string) error
 	CloseInvoked bool
@@ -58,6 +61,11 @@ func (m *AccountsService) Create(ctx context.Context, a recurly.Account) (*recur
 func (m *AccountsService) Update(ctx context.Context, code string, a recurly.Account) (*recurly.Account, error) {
 	m.UpdateInvoked = true
 	return m.OnUpdate(ctx, code, a)
+}
+
+func (m *AccountsService) Clear(ctx context.Context, code string) error {
+	m.ClearInvoked = true
+	return m.OnClear(ctx, code)
 }
 
 func (m *AccountsService) Close(ctx context.Context, code string) error {

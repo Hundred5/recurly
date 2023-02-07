@@ -6,9 +6,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/blacklightcms/recurly"
-	"github.com/blacklightcms/recurly/webhooks"
 	"github.com/google/go-cmp/cmp"
+	"github.com/togglhire/recurly"
+	"github.com/togglhire/recurly/webhooks"
 )
 
 func TestParse_BillingInfoUpdatedNotification(t *testing.T) {
