@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
-	"github.com/togglhire/recurly"
+	"github.com/toggl/recurly"
 )
 
 func TestShippingAddresses_ListAccount(t *testing.T) {

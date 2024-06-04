@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
-	"github.com/togglhire/recurly"
+	"github.com/toggl/recurly"
 )
 
 func TestShippingMethods_Get(t *testing.T) {

@@ -3,7 +3,7 @@ package webhooks
 import (
 	"encoding/xml"
 
-	"github.com/togglhire/recurly"
+	"github.com/toggl/recurly"
 )
 
 // Payment notifications.

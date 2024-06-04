@@ -1,4 +1,4 @@
-module github.com/togglhire/recurly
+module github.com/toggl/recurly
 
 go 1.19
 

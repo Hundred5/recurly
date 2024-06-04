@@ -1,7 +1,7 @@
 package mock
 
 import (
-	"github.com/togglhire/recurly"
+	"github.com/toggl/recurly"
 )
 
 // Client is a test wrapper for recurly.Client holding mocks for

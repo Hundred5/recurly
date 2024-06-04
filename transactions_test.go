@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/google/go-cmp/cmp"
-	"github.com/togglhire/recurly"
+	"github.com/toggl/recurly"
 )
 
 func TestTransactions_List(t *testing.T) {

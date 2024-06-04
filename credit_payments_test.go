@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
-	"github.com/togglhire/recurly"
+	"github.com/toggl/recurly"
 )
 
 func TestCreditPayments_List(t *testing.T) {

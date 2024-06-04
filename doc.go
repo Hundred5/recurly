@@ -6,7 +6,7 @@ Package recurly provides a client for using the Recurly API.
 Construct a new Recurly client, then use the various services on the client to
 access different parts of the Recurly API. For example:
 
-	import "github.com/togglhire/recurly"
+	import "github.com/toggl/recurly"
 
 	func main() {
 		client := recurly.NewClient("your-subdomain", "APIKEY")

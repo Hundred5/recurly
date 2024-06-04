@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
-	"github.com/togglhire/recurly"
+	"github.com/toggl/recurly"
 )
 
 func TestXML_NullBool(t *testing.T) {

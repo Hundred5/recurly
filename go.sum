@@ -1,4 +1,4 @@
-github.com/togglhire/recurly v2.0.0+incompatible h1:6AKOc/8ocaAalNWcwiV6aEkeGFcjGRZDDRvcR9WcrZk=
-github.com/togglhire/recurly v2.0.0+incompatible/go.mod h1:EkFu4RfxshuQOLAm3n2et9QANHQStCGP6SVC4BNOWOU=
+github.com/toggl/recurly v2.0.0+incompatible h1:6AKOc/8ocaAalNWcwiV6aEkeGFcjGRZDDRvcR9WcrZk=
+github.com/toggl/recurly v2.0.0+incompatible/go.mod h1:EkFu4RfxshuQOLAm3n2et9QANHQStCGP6SVC4BNOWOU=
 github.com/google/go-cmp v0.2.0 h1:+dTQ8DZQJz0Mb/HjFlkptS1FeQ4cWSnN941F8aEG4SQ=
 github.com/google/go-cmp v0.2.0/go.mod h1:oXzfMopK8JAjlY9xF4vHSVASa0yLyX7SntLO5aqRK0M=

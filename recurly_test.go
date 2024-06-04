@@ -15,7 +15,7 @@ import (
 	"time"
 
 	"github.com/google/go-cmp/cmp"
-	"github.com/togglhire/recurly"
+	"github.com/toggl/recurly"
 )
 
 // MustOpenFile opens a file in the testdata directory.

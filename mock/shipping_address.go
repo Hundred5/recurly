@@ -3,7 +3,7 @@ package mock
 import (
 	"context"
 
-	"github.com/togglhire/recurly"
+	"github.com/toggl/recurly"
 )
 
 var _ recurly.ShippingAddressesService = &ShippingAddressesService{}

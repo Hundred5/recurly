@@ -1,6 +1,6 @@
 package webhooks
 
-import "github.com/togglhire/recurly"
+import "github.com/toggl/recurly"
 
 // Subscription notifications.
 // https://dev.recurly.com/page/webhooks#subscription-notifications

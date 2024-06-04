@@ -1,6 +1,6 @@
 # Recurly Client for Go
 
-[![Build Status](https://travis-ci.org/togglhire/recurly.svg?branch=master)](https://travis-ci.org/togglhire/recurly) [![GoDoc](https://godoc.org/github.com/togglhire/recurly?status.svg)](https://godoc.org/github.com/togglhire/recurly/)
+[![Build Status](https://travis-ci.org/togglhire/recurly.svg?branch=master)](https://travis-ci.org/togglhire/recurly) [![GoDoc](https://godoc.org/github.com/toggl/recurly?status.svg)](https://godoc.org/github.com/toggl/recurly/)
 
 Recurly is a Go (golang) API Client for the [Recurly](https://recurly.com/) API. It is actively maintained, unit tested, and uses no external dependencies. The vast majority of the API is implemented.
 
@@ -27,23 +27,23 @@ Supports:
 Install:
 
 ```shell
-go get github.com/togglhire/recurly
+go get github.com/toggl/recurly
 ```
 
 Import:
 
 ```go
-import "github.com/togglhire/recurly"
+import "github.com/toggl/recurly"
 ```
 
 Resources:
 
-- [API Docs](https://godoc.org/github.com/togglhire/recurly/)
-- [Examples](https://godoc.org/github.com/togglhire/recurly/#pkg-examples)
+- [API Docs](https://godoc.org/github.com/toggl/recurly/)
+- [Examples](https://godoc.org/github.com/toggl/recurly/#pkg-examples)
 
 ## Note on v1 and breaking changes
 
-If migrating from a previous version of the library, there was a large refactor with breaking changes released to address some design issues with the library. See the [migration guide](https://github.com/togglhire/recurly/wiki/v1-Migration-Guide) for steps on how to migrate to the latest version.
+If migrating from a previous version of the library, there was a large refactor with breaking changes released to address some design issues with the library. See the [migration guide](https://github.com/toggl/recurly/wiki/v1-Migration-Guide) for steps on how to migrate to the latest version.
 
 This is recommended for all users.
 
@@ -60,7 +60,7 @@ a, err := client.Accounts.Get(context.Background(), "1")
 
 ## Examples and How To
 
-Please go through [examples](https://godoc.org/github.com/togglhire/recurly/#pkg-examples) for detailed examples of using this package.
+Please go through [examples](https://godoc.org/github.com/toggl/recurly/#pkg-examples) for detailed examples of using this package.
 
 The examples explain important cases like:
 
@@ -165,7 +165,7 @@ The usage is to parse the webhook from a reader, then use a switch statement
 to determine the type of webhook received.
 
 ```go
-// import "github.com/togglhire/recurly/webhooks"
+// import "github.com/toggl/recurly/webhooks"
 
 hook, err := webhooks.Parse(r)
 if e, ok := err.(*webhooks.ErrUnknownNotification); ok {
@@ -200,7 +200,7 @@ when testing your own code that uses this library.
 Instead we recommend using the `mock` package. The `mock` package provides mocks
 for all of the different services in this library.
 
-For examples of how to test your code using mocks, visit the [GoDoc examples](https://godoc.org/github.com/togglhire/recurly/mock/).
+For examples of how to test your code using mocks, visit the [GoDoc examples](https://godoc.org/github.com/toggl/recurly/mock/).
 
 > **NOTE**: If you need to go beyond mocks and test requests/responses, `testing.go` exports `TestServer`. This is how the library tests itself. See the GoDoc or the `*_test.go` files for usage examples.
 

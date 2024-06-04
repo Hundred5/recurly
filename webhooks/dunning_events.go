@@ -1,6 +1,6 @@
 package webhooks
 
-import "github.com/togglhire/recurly"
+import "github.com/toggl/recurly"
 
 // Dunning event constants.
 const (

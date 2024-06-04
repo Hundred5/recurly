@@ -7,8 +7,8 @@ import (
 	"time"
 
 	"github.com/google/go-cmp/cmp"
-	"github.com/togglhire/recurly"
-	"github.com/togglhire/recurly/webhooks"
+	"github.com/toggl/recurly"
+	"github.com/toggl/recurly/webhooks"
 )
 
 func TestParse_BillingInfoUpdatedNotification(t *testing.T) {

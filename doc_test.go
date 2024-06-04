@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/togglhire/recurly"
+	"github.com/toggl/recurly"
 )
 
 var client *recurly.Client

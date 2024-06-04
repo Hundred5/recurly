@@ -5,8 +5,8 @@ import (
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
-	"github.com/togglhire/recurly"
-	"github.com/togglhire/recurly/mock"
+	"github.com/toggl/recurly"
+	"github.com/toggl/recurly/mock"
 )
 
 func ExampleNewClient(t *testing.T) {

@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"context"
 
-	"github.com/togglhire/recurly"
+	"github.com/toggl/recurly"
 )
 
 var _ recurly.InvoicesService = &InvoicesService{}
