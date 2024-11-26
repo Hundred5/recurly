@@ -257,7 +257,8 @@ type UpdateSubscription struct {
 	CouponCode             string               `xml:"coupon_code,omitempty"`
 	RevenueScheduleType    string               `xml:"revenue_schedule_type,omitempty"`
 	RemainingBillingCycles NullInt              `xml:"remaining_billing_cycles,omitempty"`
-	ImportedTrial          NullBool             `xml:"imported_trial,omitempty"`
+	ImportedTrial          NullBool             `xml:"imported_trial,omitempty"`	
+	TrialEndsAt             NullTime            `xml:"trial_ends_at,omitempty"`
 	RenewalBillingCycles   NullInt              `xml:"renewal_billing_cycles,omitempty"`
 	AutoRenew              NullBool             `xml:"auto_renew,omitempty"`
 	CustomFields           *CustomFields        `xml:"custom_fields,omitempty"`
